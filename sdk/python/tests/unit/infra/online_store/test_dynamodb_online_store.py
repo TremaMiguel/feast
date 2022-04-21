@@ -179,7 +179,6 @@ def test_dynamodb_online_store_online_read(
 
 
 @mock_dynamodb2
-<<<<<<< HEAD
 def test_online_read_unknown_entity(repo_config):
     """Test DynamoDBOnlineStore online_read method."""
     n_samples = 2
@@ -215,9 +214,6 @@ def test_online_read_unknown_entity(repo_config):
         assert returned_items[pos] == (None, None)
 
 
-@mock_dynamodb2
-def test_write_batch_non_duplicates(repo_config):
-=======
 @pytest.mark.parametrize("n_samples", [5, 50, 100])
 def test_dynamodb_online_store_online_write_batch(
     repo_config, dynamodb_online_store, n_samples
@@ -303,7 +299,6 @@ def test_dynamodb_online_store_teardown(repo_config, dynamodb_online_store):
 def test_dynamodb_online_store_write_batch_non_duplicates(
     repo_config, dynamodb_online_store
 ):
->>>>>>> c382f175980bd3a34f60e9c11fde830ae3159812
     """Test DynamoDBOnline Store deduplicate write batch request items."""
     dynamodb_tbl = f"{TABLE_NAME}_batch_non_duplicates"
     _create_test_table(PROJECT, dynamodb_tbl, REGION)
@@ -320,3 +315,4 @@ def test_dynamodb_online_store_write_batch_non_duplicates(
     returned_items = response.get("Items", None)
     assert returned_items is not None
     assert len(returned_items) == len(data)
+
